@@ -6,7 +6,7 @@ use App\Jobs\ManageUrls;
 use App\Models\Url;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use GuzzleHttp\Client;
 
 class UrlController extends Controller
 {
@@ -18,7 +18,14 @@ class UrlController extends Controller
      * @return Response Json response
      */
     public function short_url(Request $request){
-        $url = $request->get('url');
+        $url = $request->get('url'); 
+
+        $client = new Client();
+        $request = $client->head($url);
+
+        if( $request->getStatusCode() != 200 ) {
+            return response()->json(["Error" => "The url provided does not work."]);
+        }
 
         $urlModel = Url::where('original', $url)->first();
 

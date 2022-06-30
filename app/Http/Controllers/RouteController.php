@@ -27,6 +27,9 @@ class RouteController extends Controller
 
         $urlModel->save();
 
+        if(strpos($urlModel->original, 'https://') !== false || strpos($urlModel->original, 'http://') !== false){
+            return redirect()->away($urlModel->original);
+        }
         return redirect()->away('https://'.$urlModel->original);
     }
 }
