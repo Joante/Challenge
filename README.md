@@ -7,9 +7,9 @@ Challenge Joan Teich
 
 -- Install:
   1. In the selected folder execute:
-        git clone https://github.com/Joante/Challenge.git
+        `git clone https://github.com/Joante/Challenge.git`
   2. Copy the .env.example to .env
-        cp .env.example .env
+        `cp .env.example .env`
   3. Modify the .env file to connect to the database:
     `
       DB_HOST=127.0.0.1
@@ -19,15 +19,15 @@ Challenge Joan Teich
       DB_PASSWORD=PASSWORD
      `
   4. Install all the dependencies with composer:
-        composer update
+        `composer update`
   5. Create the tables in the database:
-        php artisan migrate
+        `php artisan migrate`
 
 -- Run the application:
   1. Create a server with artisan:
-        php artisan serve
+        `php artisan serve`
   2. Run the queque listener:
-        php artisan queue:listen
+       `php artisan queue:listen`
 
     
 If you make a POST request to URL/api/url with a body like this:
